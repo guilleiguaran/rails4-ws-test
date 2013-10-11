@@ -18,3 +18,5 @@ gem 'puma'
 
 # Use tubesock for websockets
 gem 'tubesock'
+
+gem 'rails_12factor'
