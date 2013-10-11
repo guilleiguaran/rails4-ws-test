@@ -1,0 +1,22 @@
+<pre id='chat'></pre>
+
+<script>
+  $(document).ready(function() {
+    // reading
+    var ws = new WebSocket("ws://" + location.host + "/chat/chat");
+    ws.onmessage = function(e) { $('#chat').append(e.data + "\n") };
+
+    // writing
+    $("form").bind('submit', function(e) {
+      var message = $('#msg').val();
+      ws.send(message);
+      $('#msg').val(''); $('#msg').focus();
+      e.preventDefault();
+    });
+  });
+</script>
+
+<form>
+  <input id='msg' placeholder='type message here...' />
+  <input type="submit" value="Submit">
+</form>
